@@ -62,7 +62,7 @@ In the next few sections, we'll explore how to add taints to our preconfigured m
 
 Let's start by adding a `taint` to our managed node group using the following `aws` cli command: 
 
-```bash
+```bash timeout=180
 $ aws eks update-nodegroup-config \
     --cluster-name $EKS_CLUSTER_NAME \
     --nodegroup-name $EKS_TAINTED_MNG_NAME \
@@ -97,7 +97,7 @@ You can also configure taints on a managed node group using the `eksctl` CLI. Se
 The configuration for managed node groups currently support the folowing values for the taint `effect`:
 * `NO_SCHEDULE` - This corresponds to the Kubernetes `NoSchedule` taint effect. This configures the managed node group with a taint that repels all pods that don't have a matching toleration. All running pods are **not evicted from the manage node group's nodes**.
 * `NO_EXECUTE` - This corresponds to the Kubernetes `NoExecute` taint effect. Allows nodes configured with this taint to not only repel newly scheduled pods but also **evicts any running pods without a matching toleration**.
-* `PREFER_NO_SCHEDULE` - This corresponds to the Kubernets `PreferNoSchedule` taint effect. If possible, EKS avoids scheduling Pods that do not tolerate this taint onto the node.
+* `PREFER_NO_SCHEDULE` - This corresponds to the Kubernetes `PreferNoSchedule` taint effect. If possible, EKS avoids scheduling Pods that do not tolerate this taint onto the node.
 
 We can use the following command to check the taints have been correctly configured for the managed node group:
 

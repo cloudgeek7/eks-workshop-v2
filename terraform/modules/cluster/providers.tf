@@ -22,7 +22,7 @@ terraform {
 
     helm = {
       source  = "hashicorp/helm"
-      version = "2.8.0"
+      version = "2.9.0"
     }
 
     grafana = {
@@ -40,5 +40,5 @@ terraform {
       version = ">= 1.7.0"
     }
   }
-  required_version = "~> 1.3.7"
+  required_version = ">= 1.3.7"
 }

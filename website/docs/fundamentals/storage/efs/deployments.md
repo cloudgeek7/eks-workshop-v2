@@ -16,7 +16,7 @@ Namespace:              assets
 [...]
   Containers:
    assets:
-    Image:      public.ecr.aws/aws-containers/retail-store-sample-assets:latest
+    Image:      public.ecr.aws/aws-containers/retail-store-sample-assets:0.4.0
     Port:       8080/TCP
     Host Port:  0/TCP
     Limits:
@@ -76,7 +76,7 @@ Now confirm the new product image `newproduct.png` isn't present on the file sys
 
 ```bash
 $ POD_NAME=$(kubectl -n assets get pods -o jsonpath='{.items[1].metadata.name}')
-$ kubectl exec --stdin deployment/assets $POD_NAME \
+$ kubectl exec --stdin $POD_NAME \
   -n assets -- bash -c 'ls /usr/share/nginx/html/assets'
 ```
 
